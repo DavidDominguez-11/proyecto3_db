@@ -34,6 +34,7 @@ func main() {
 	artworkRepo := repositories.NewArtworkRepository(dbInstance)
 	saleRepo := repositories.NewSaleRepository(dbInstance)// para filtro Ventas Realizadas
 	auctionRepo := repositories.NewAuctionRepository(dbInstance)// filtro Ofertas por Subasta
+	transactionRepo := repositories.NewTransactionRepository(dbInstance) //filtro Transacciones del Sistema
 	
 	// Inicializar handlers
 	userHandler := handlers.NewUserHandler(userRepo)
@@ -41,6 +42,7 @@ func main() {
 	artworkHandler := handlers.NewArtworkHandler(artworkRepo)
 	salesHandler := handlers.NewSalesHandler(saleRepo)// para filtro Ventas Realizadas
 	auctionHandler := handlers.NewAuctionHandler(auctionRepo)// filtro Ofertas por Subasta
+	transactionHandler := handlers.NewTransactionHandler(transactionRepo)//filtro Transacciones del Sistema
 	
 	// Configurar enrutador
 	router := mux.NewRouter()
@@ -69,6 +71,7 @@ func main() {
 	router.HandleFunc("/sales-report", salesHandler.GetSalesReport).Methods("GET") // Ventas Realizadas
 	router.HandleFunc("/auctions/{subasta_id}/offers", auctionHandler.GetAuctionOffers).Methods("GET") // filtro Ofertas por Subasta
 	router.HandleFunc("/artworks-report", artworkHandler.GetArtworkReport).Methods("GET")
+	router.HandleFunc("/transactions", transactionHandler.GetTransactions).Methods("GET")// filtro Transacciones del Sistema
 
 	// Iniciar servidor
 	log.Println("Servidor iniciado en el puerto 8080")
