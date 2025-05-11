@@ -32,13 +32,15 @@ func main() {
 	userRepo := repositories.NewUserRepository(dbInstance)
 	artistRepo := repositories.NewArtistRepository(dbInstance)
 	artworkRepo := repositories.NewArtworkRepository(dbInstance)
-	saleRepo := repositories.NewSaleRepository(dbInstance)// para filtro 
+	saleRepo := repositories.NewSaleRepository(dbInstance)// para filtro Ventas Realizadas
+	auctionRepo := repositories.NewAuctionRepository(dbInstance)// filtro Ofertas por Subasta
 	
 	// Inicializar handlers
 	userHandler := handlers.NewUserHandler(userRepo)
 	artistHandler := handlers.NewArtistHandler(artistRepo)
 	artworkHandler := handlers.NewArtworkHandler(artworkRepo)
-	salesHandler := handlers.NewSalesHandler(saleRepo)// para filtro
+	salesHandler := handlers.NewSalesHandler(saleRepo)// para filtro Ventas Realizadas
+	auctionHandler := handlers.NewAuctionHandler(auctionRepo)// filtro Ofertas por Subasta
 	
 	// Configurar enrutador
 	router := mux.NewRouter()
@@ -62,8 +64,10 @@ func main() {
 	router.HandleFunc("/artworks/{id}", artworkHandler.GetArtwork).Methods("GET")
 	router.HandleFunc("/artworks/{id}", artworkHandler.UpdateArtwork).Methods("PUT")
 	router.HandleFunc("/artworks/{id}", artworkHandler.DeleteArtwork).Methods("DELETE")
+	
 	//Filtros
-	router.HandleFunc("/sales-report", salesHandler.GetSalesReport).Methods("GET")
+	router.HandleFunc("/sales-report", salesHandler.GetSalesReport).Methods("GET") // Ventas Realizadas
+	router.HandleFunc("/auctions/{subasta_id}/offers", auctionHandler.GetAuctionOffers).Methods("GET") // filtro Ofertas por Subasta
 
 	// Iniciar servidor
 	log.Println("Servidor iniciado en el puerto 8080")
