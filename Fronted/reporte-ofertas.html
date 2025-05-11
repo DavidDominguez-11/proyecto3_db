@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte de Ofertas por Subasta</title>
+  <link rel="stylesheet" href="ventas.css" />
+</head>
+<body>
+  <header>
+    <h1>Reporte de Ofertas por Subasta</h1>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <div class="side-menu" id="sideMenu">
+      <a href="index.html">← Volver al Inicio</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="filtros">
+      <label for="buscar-ofertas">Buscar:</label>
+      <input type="text" id="buscar-ofertas" placeholder="Buscar por obra, ofertante...">
+    </section>
+
+    <section class="tabla-resultados">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Subasta</th>
+            <th>Obra</th>
+            <th>Ofertante</th>
+            <th>Monto Ofrecido</th>
+            <th>Fecha de Oferta</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2001</td>
+            <td>Mar Abierto</td>
+            <td>Juan Ríos</td>
+            <td>$780</td>
+            <td>2024-04-02</td>
+            <td>Pendiente</td>
+          </tr>
+          <tr>
+            <td>2002</td>
+            <td>Luz Interior</td>
+            <td>María Vera</td>
+            <td>$950</td>
+            <td>2024-04-03</td>
+            <td>Aceptada</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const sideMenu = document.getElementById("sideMenu");
+
+    menuToggle.addEventListener("click", () => {
+      sideMenu.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

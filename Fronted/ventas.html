@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte de Ventas Realizadas</title>
+  <link rel="stylesheet" href="ventas.css" />
+</head>
+<body>
+  <!-- Botón hamburguesa para volver al inicio -->
+  <div class="back-menu">
+    <a href="index.html">Regresar</a>
+  </div>
+
+  <header>
+    <h1>Reporte de Ventas Realizadas</h1>
+  </header>
+
+  <main>
+    <section class="filtros">
+      <label for="busqueda">Buscar:</label>
+      <input type="text" id="busqueda" placeholder="Buscar por comprador, obra, país...">
+    </section>
+
+    <section class="tabla-resultados">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Venta</th>
+            <th>Comprador</th>
+            <th>Obra</th>
+            <th>País del Artista</th>
+            <th>Monto</th>
+            <th>Método de Pago</th>
+            <th>Fecha de Venta</th>
+            <th>Estado del Envío</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1001</td>
+            <td>Ana Gómez</td>
+            <td>Atardecer</td>
+            <td>México</td>
+            <td>$450</td>
+            <td>Tarjeta</td>
+            <td>2024-03-15</td>
+            <td>Entregado</td>
+          </tr>
+          <!-- Aquí puedes añadir más filas de ejemplo -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

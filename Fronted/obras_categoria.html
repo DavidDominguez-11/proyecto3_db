@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte de Obras por Categoría y Popularidad</title>
+  <link rel="stylesheet" href="ventas.css" />
+</head>
+<body>
+  <div class="back-menu">
+    <a href="index.html">Regresar</a>
+  </div>
+
+  <header>
+    <h1>Reporte de Obras por Categoría y Popularidad</h1>
+  </header>
+
+  <main>
+    <section class="filtros">
+      <label for="categoria">Categoría:</label>
+      <input type="text" id="categoria" placeholder="Categoría de la obra...">
+
+      <label for="precio">Rango de Precio:</label>
+      <input type="number" id="precio-min" placeholder="Precio mínimo">
+      <input type="number" id="precio-max" placeholder="Precio máximo">
+
+      <label for="estado">Estado:</label>
+      <select id="estado">
+        <option value="vendida">Vendida</option>
+        <option value="en venta">En Venta</option>
+      </select>
+
+      <label for="artista">Artista:</label>
+      <input type="text" id="artista" placeholder="Nombre del artista...">
+    </section>
+
+    <section class="tabla-resultados">
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Obra</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Artista</th>
+            <th>Total Ventas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Impresionismo</td>
+            <td>El Jardín</td>
+            <td>$8000</td>
+            <td>Vendida</td>
+            <td>Lucia Ríos</td>
+            <td>120</td>
+          </tr>
+          <!-- Más filas -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

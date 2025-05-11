@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte de Transacciones del Sistema</title>
+  <link rel="stylesheet" href="ventas.css" />
+</head>
+<body>
+  <div class="back-menu">
+    <a href="index.html">Regresar</a>
+  </div>
+
+  <header>
+    <h1>Reporte de Transacciones del Sistema</h1>
+  </header>
+
+  <main>
+    <section class="filtros">
+      <label for="tipo">Tipo de Transacción:</label>
+      <select id="tipo">
+        <option value="venta">Venta</option>
+        <option value="subasta">Subasta</option>
+        <option value="oferta">Oferta</option>
+      </select>
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" />
+
+      <label for="detalle">Detalle:</label>
+      <input type="text" id="detalle" placeholder="Buscar detalles...">
+    </section>
+
+    <section class="tabla-resultados">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Transacción</th>
+            <th>Tipo</th>
+            <th>Detalle</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3001</td>
+            <td>Venta</td>
+            <td>Compra de obra ID 101</td>
+            <td>2024-03-10</td>
+          </tr>
+          <!-- Más filas -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte de Obras por Estado</title>
+  <link rel="stylesheet" href="ventas.css" />
+</head>
+<body>
+  <div class="back-menu">
+    <a href="index.html">Regresar</a>
+  </div>
+
+  <header>
+    <h1>Reporte de Obras por Estado</h1>
+  </header>
+
+  <main>
+    <section class="filtros">
+      <label for="estado">Estado:</label>
+      <select id="estado">
+        <option value="en venta">En Venta</option>
+        <option value="vendida">Vendida</option>
+        <option value="en reserva">En Reserva</option>
+      </select>
+
+      <label for="estilo">Estilo:</label>
+      <input type="text" id="estilo" placeholder="Estilo de la obra...">
+
+      <label for="pais">País del Artista:</label>
+      <input type="text" id="pais" placeholder="País del artista...">
+
+      <label for="precio">Rango de Precio:</label>
+      <input type="number" id="precio-min" placeholder="Precio mínimo">
+      <input type="number" id="precio-max" placeholder="Precio máximo">
+    </section>
+
+    <section class="tabla-resultados">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Obra</th>
+            <th>Título</th>
+            <th>Estado</th>
+            <th>Estilo</th>
+            <th>País del Artista</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>101</td>
+            <td>El Sol de la Mañana</td>
+            <td>En Venta</td>
+            <td>Impresionismo</td>
+            <td>España</td>
+            <td>$7000</td>
+          </tr>
+          <!-- Más filas -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
