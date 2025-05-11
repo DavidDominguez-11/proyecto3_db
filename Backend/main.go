@@ -68,6 +68,7 @@ func main() {
 	//Filtros
 	router.HandleFunc("/sales-report", salesHandler.GetSalesReport).Methods("GET") // Ventas Realizadas
 	router.HandleFunc("/auctions/{subasta_id}/offers", auctionHandler.GetAuctionOffers).Methods("GET") // filtro Ofertas por Subasta
+	router.HandleFunc("/artworks-report", artworkHandler.GetArtworkReport).Methods("GET")
 
 	// Iniciar servidor
 	log.Println("Servidor iniciado en el puerto 8080")
