@@ -1,7 +1,7 @@
 --Datos Usuario
 DO $$
 BEGIN
-    FOR i IN 1..30 LOOP
+    FOR i IN 1..100 LOOP
         INSERT INTO Usuario (nombre, correo, tipo_usuario)
         VALUES (
             'Usuario' || i,
@@ -15,25 +15,28 @@ BEGIN
     END LOOP;
 END $$;
 
+
 --Datos PerfilArtista
 DO $$
 DECLARE
     uid INT;
 BEGIN
-    FOR uid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'vendedor' LIMIT 10 LOOP
+    FOR uid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'vendedor' LIMIT 30 LOOP
         INSERT INTO PerfilArtista (usuario_id, biografia, pais_origen, estilo_principal)
         VALUES (uid, 'Biografía del artista ' || uid, 'País' || uid, 'Estilo' || uid);
     END LOOP;
 END $$;
 
+
 --Datos Categoria
 DO $$
 BEGIN
-    FOR i IN 1..30 LOOP
+    FOR i IN 1..100 LOOP
         INSERT INTO Categoria (nombre, descripcion)
         VALUES ('Categoria' || i, 'Descripción de la categoría ' || i);
     END LOOP;
 END $$;
+
 
 --Datos ObraArte
 DO $$
@@ -42,20 +45,23 @@ DECLARE
     i INT := 1;
 BEGIN
     FOR aid IN SELECT artista_id FROM PerfilArtista LOOP
-        FOR j IN 1..3 LOOP  -- 10 artistas * 3 obras = 30
+        FOR j IN 1..4 LOOP  -- ajustamos para que 25 artistas * 4 = 100
+            EXIT WHEN i > 100;
             INSERT INTO ObraArte (titulo, descripcion, año_creacion, precio_referencia, estado, artista_id)
             VALUES (
                 'Obra ' || i,
                 'Descripción de la obra ' || i,
-                2000 + (i % 20),
+                2000 + (i % 21),
                 1000 + (i * 10),
                 'en venta',
                 aid
             );
             i := i + 1;
         END LOOP;
+        EXIT WHEN i > 100;
     END LOOP;
 END $$;
+
 
 --Datos ObraCategoria
 DO $$
@@ -64,9 +70,10 @@ DECLARE
 BEGIN
     FOR oid IN SELECT obra_id FROM ObraArte LOOP
         INSERT INTO ObraCategoria (obra_id, categoria_id)
-        VALUES (oid, ((oid - 1) % 30) + 1); -- asignar una categoría
+        VALUES (oid, ((oid - 1) % 100) + 1);
     END LOOP;
 END $$;
+
 
 --Datos Venta
 DO $$
@@ -75,7 +82,7 @@ DECLARE
     oid INT;
     i INT := 1;
 BEGIN
-    FOR cid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'comprador' LIMIT 10 LOOP
+    FOR cid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'comprador' LIMIT 50 LOOP
         SELECT obra_id INTO oid FROM ObraArte WHERE estado = 'en venta' LIMIT 1;
         INSERT INTO Venta (usuario_id, obra_id, fecha_venta, monto, metodo_pago)
         VALUES (
@@ -88,6 +95,7 @@ BEGIN
         i := i + 1;
     END LOOP;
 END $$;
+
 
 --Datos Envio
 DO $$
@@ -105,12 +113,13 @@ BEGIN
     END LOOP;
 END $$;
 
+
 --Datos Subasta
 DO $$
 DECLARE
     oid INT;
 BEGIN
-    FOR oid IN SELECT obra_id FROM ObraArte WHERE estado != 'vendida' LIMIT 10 LOOP
+    FOR oid IN SELECT obra_id FROM ObraArte WHERE estado != 'vendida' LIMIT 30 LOOP
         INSERT INTO Subasta (obra_id, fecha_inicio, fecha_fin, monto_inicial)
         VALUES (
             oid,
@@ -120,6 +129,7 @@ BEGIN
         );
     END LOOP;
 END $$;
+
 
 --Datos OfertaSubasta
 DO $$
