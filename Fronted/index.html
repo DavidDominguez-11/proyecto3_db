@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArteVibe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">ArteVibe</div>
+    <nav class="nav-links">
+      <a href="#">Inicio</a>
+      <a href="#">Galería</a>
+      <a href="#">Subasta</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+  </header>
+
+  <div class="side-menu" id="sideMenu">
+    <a href="#">Usuario</a>
+    <a href="#">Envio</a>
+    <a href="#">nose</a>
+  </div>
+
+  <main>
+    <section class="galeria">
+      <h2>Galería</h2>
+      <div class="card-container">
+        <div class="card">
+          <img src="foto1.jpg" alt="Obra 1">
+          <p class="titulo">Pieza: Luz Interior</p>
+          <p class="autor">Autor: Ana Pérez</p>
+          <p class="fecha">Fecha: 2022</p>
+          <p class="precio">Precio: $500</p>
+        </div>
+        <div class="card">
+          <img src="foto2.jpg" alt="Obra 2">
+          <p class="titulo">Pieza: Noche Azul</p>
+          <p class="autor">Autor: Luis Martínez</p>
+          <p class="fecha">Fecha: 2023</p>
+          <p class="precio">Precio: $750</p>
+        </div>
+        <div class="card">
+          <img src="foto3.jpg" alt="Obra 3">
+          <p class="titulo">Pieza: Horizonte</p>
+          <p class="autor">Autor: Carmen López</p>
+          <p class="fecha">Fecha: 2021</p>
+          <p class="precio">Precio: $620</p>
+        </div>
+      </div>
+      <button class="ver-mas">Ver más</button>
+    </section>
+
+    <section class="subastas">
+      <h2>Subastas Activas</h2>
+      <div class="card-container">
+        <div class="card">
+          <img src="foto4.jpg" alt="Subasta 1">
+          <p class="titulo">Pieza: Amanecer</p>
+          <p class="autor">Autor: Diego Ríos</p>
+          <p class="fecha">Fecha: 2024</p>
+          <p class="precio">Precio actual: $1200</p>
+        </div>
+        <div class="card">
+          <img src="foto5.jpg" alt="Subasta 2">
+          <p class="titulo">Pieza: Fuego Interno</p>
+          <p class="autor">Autor: Valeria Mena</p>
+          <p class="fecha">Fecha: 2023</p>
+          <p class="precio">Precio actual: $980</p>
+        </div>
+      </div>
+      <button class="ver-mas">Ver más</button>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 ArteVibe
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const sideMenu = document.getElementById("sideMenu");
+
+    menuToggle.addEventListener("click", () => {
+      sideMenu.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

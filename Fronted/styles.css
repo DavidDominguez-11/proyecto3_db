@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  /* Navbar */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f74ab5;
+    color: white;
+    padding: 20px 30px;
+    position: relative;
+    z-index: 1001;
+  }
+  
+  .logo {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  /* Botón hamburguesa */
+  .menu-toggle {
+    font-size: 28px;
+    cursor: pointer;
+    display: block;
+    color: white;
+    z-index: 1002;
+  }
+  
+  /* Menú lateral */
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    height: 100vh;
+    width: 250px;
+    background-color: #ff1f81;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    padding: 80px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .side-menu.active {
+    right: 0;
+  }
+  
+  .side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Main content */
+  main {
+    padding: 40px;
+  }
+  
+  section h2 {
+    margin-bottom: 35px;
+    color: #f74ab5;
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #39c9f4;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: white;
+    font-weight: bold;
+    width: 250px;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin: 5px 0;
+    color: white;
+    font-weight: 400;
+  }
+  
+  .ver-mas {
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #f74ab5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ver-mas:hover {
+    background-color: #e4399e;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #f74ab5;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
