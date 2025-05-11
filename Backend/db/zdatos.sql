@@ -1,32 +1,59 @@
--- zdatos.sql: poblar tabla Usuario con 30 registros
-INSERT INTO Usuario (nombre, correo, fecha_registro, tipo_usuario) VALUES
-  ('Ana Gómez',    'ana.gomez@example.com',    CURRENT_DATE, 'comprador'),
-  ('Bruno López',  'bruno.lopez@example.com',  CURRENT_DATE - INTERVAL '1 day', 'vendedor'),
-  ('Carla Díaz',   'carla.diaz@example.com',   CURRENT_DATE - INTERVAL '2 day', 'comprador'),
-  ('David Pérez',  'david.perez@example.com',  CURRENT_DATE - INTERVAL '3 day', 'admin'),
-  ('Elena Ruiz',   'elena.ruiz@example.com',   CURRENT_DATE - INTERVAL '4 day', 'vendedor'),
-  ('Fabián Ortiz', 'fabian.ortiz@example.com', CURRENT_DATE - INTERVAL '5 day', 'comprador'),
-  ('Gabriela Vega','gabriela.vega@example.com',CURRENT_DATE - INTERVAL '6 day', 'vendedor'),
-  ('Hugo Castro',  'hugo.castro@example.com',  CURRENT_DATE - INTERVAL '7 day', 'comprador'),
-  ('Isabel Torres','isabel.torres@example.com',CURRENT_DATE - INTERVAL '8 day','admin'),
-  ('Javier Solis', 'javier.solis@example.com', CURRENT_DATE - INTERVAL '9 day', 'comprador'),
-  ('Karla Medina', 'karla.medina@example.com', CURRENT_DATE - INTERVAL '10 day','vendedor'),
-  ('Luis Moreno',  'luis.moreno@example.com',  CURRENT_DATE - INTERVAL '11 day','comprador'),
-  ('María Peña',   'maria.pena@example.com',   CURRENT_DATE - INTERVAL '12 day','vendedor'),
-  ('Norberto Cruz','norberto.cruz@example.com',CURRENT_DATE - INTERVAL '13 day','comprador'),
-  ('Olga Santos',  'olga.santos@example.com',  CURRENT_DATE - INTERVAL '14 day','admin'),
-  ('Pablo Suárez', 'pablo.suarez@example.com', CURRENT_DATE - INTERVAL '15 day','comprador'),
-  ('Queralt Ruiz', 'queralt.ruiz@example.com', CURRENT_DATE - INTERVAL '16 day','vendedor'),
-  ('Raúl Mendoza', 'raul.mendoza@example.com', CURRENT_DATE - INTERVAL '17 day','comprador'),
-  ('Sofía Blanco', 'sofia.blanco@example.com', CURRENT_DATE - INTERVAL '18 day','vendedor'),
-  ('Tomás Bravo',  'tomas.bravo@example.com',  CURRENT_DATE - INTERVAL '19 day','comprador'),
-  ('Úrsula León',  'ursula.leon@example.com',  CURRENT_DATE - INTERVAL '20 day','admin'),
-  ('Víctor Rojas', 'victor.rojas@example.com', CURRENT_DATE - INTERVAL '21 day','comprador'),
-  ('Wendy Silva',  'wendy.silva@example.com',  CURRENT_DATE - INTERVAL '22 day','vendedor'),
-  ('Ximena Paz',   'ximena.paz@example.com',   CURRENT_DATE - INTERVAL '23 day','comprador'),
-  ('Yahir Reyes',  'yahir.reyes@example.com',  CURRENT_DATE - INTERVAL '24 day','vendedor'),
-  ('Zulema Avila', 'zulema.avila@example.com', CURRENT_DATE - INTERVAL '25 day','comprador'),
-  ('Alan Núñez',   'alan.nunez@example.com',   CURRENT_DATE - INTERVAL '26 day','vendedor'),
-  ('Beatriz Sol',  'beatriz.sol@example.com',  CURRENT_DATE - INTERVAL '27 day','comprador'),
-  ('Cristina Paz', 'cristina.paz@example.com', CURRENT_DATE - INTERVAL '28 day','vendedor'),
-  ('Diego Varela', 'diego.varela@example.com', CURRENT_DATE - INTERVAL '29 day','comprador');
+-- 1)
+INSERT INTO Usuario (nombre, correo, fecha_registro, tipo_usuario)
+SELECT
+  -- "Usuario 1", "Usuario 2", …
+  'Usuario ' || i AS nombre,
+  -- "user1@example.com", "user2@example.com", …
+  'user' || i || '@example.com' AS correo,
+  -- Fecha de registro: hoy menos (i-1)%30 días
+  CURRENT_DATE - ((i - 1) % 30) * INTERVAL '1 day' AS fecha_registro,
+  -- Rota los tipos: comprador, vendedor, admin
+  CASE (i - 1) % 3
+    WHEN 0 THEN 'comprador'
+    WHEN 1 THEN 'vendedor'
+    ELSE 'admin'
+  END
+FROM generate_series(1,30) AS s(i);
+
+-- 2) PerfilArtista: un artista para los primeros 20 usuarios
+INSERT INTO PerfilArtista (usuario_id, biografia, pais_origen, estilo_principal)
+SELECT
+  i,
+  'Biografía del artista ' || i,
+  CASE (i - 1) % 5
+    WHEN 0 THEN 'España'
+    WHEN 1 THEN 'México'
+    WHEN 2 THEN 'Argentina'
+    WHEN 3 THEN 'Colombia'
+    ELSE 'Chile'
+  END,
+  CASE (i - 1) % 4
+    WHEN 0 THEN 'Realismo'
+    WHEN 1 THEN 'Impresionismo'
+    WHEN 2 THEN 'Surrealismo'
+    ELSE 'Abstracto'
+  END
+FROM generate_series(1,30) AS s(i);
+
+-- 3) ObraArte: 50 obras distribuidas entre los 20 artistas
+INSERT INTO ObraArte (titulo, descripcion, año_creacion, precio_referencia, estado, artista_id)
+SELECT
+  'Obra ' || i,
+  'Descripción de la obra ' || i,
+  1500 + ((i - 1) % 526),
+  (i * 100)::NUMERIC(10,2),
+  CASE (i - 1) % 4
+    WHEN 0 THEN 'en venta'
+    WHEN 1 THEN 'subasta'
+    WHEN 2 THEN 'vendida'
+    ELSE 'reservada'
+  END,
+  ((i - 1) % 20) + 1
+FROM generate_series(1,30) AS s(i);
+
+-- 4) Categoria: 10 categorías
+INSERT INTO Categoria (nombre, descripcion)
+SELECT
+  'Categoría ' || i,
+  'Descripción de la categoría ' || i
+FROM generate_series(1,30) AS s(i);
