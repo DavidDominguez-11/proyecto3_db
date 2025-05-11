@@ -32,12 +32,14 @@ func main() {
 	userRepo := repositories.NewUserRepository(dbInstance)
 	artistRepo := repositories.NewArtistRepository(dbInstance)
 	artworkRepo := repositories.NewArtworkRepository(dbInstance)
-
+	saleRepo := repositories.NewSaleRepository(dbInstance)// para filtro 
+	
 	// Inicializar handlers
 	userHandler := handlers.NewUserHandler(userRepo)
 	artistHandler := handlers.NewArtistHandler(artistRepo)
 	artworkHandler := handlers.NewArtworkHandler(artworkRepo)
-
+	salesHandler := handlers.NewSalesHandler(saleRepo)// para filtro
+	
 	// Configurar enrutador
 	router := mux.NewRouter()
 
@@ -60,6 +62,8 @@ func main() {
 	router.HandleFunc("/artworks/{id}", artworkHandler.GetArtwork).Methods("GET")
 	router.HandleFunc("/artworks/{id}", artworkHandler.UpdateArtwork).Methods("PUT")
 	router.HandleFunc("/artworks/{id}", artworkHandler.DeleteArtwork).Methods("DELETE")
+	//Filtros
+	router.HandleFunc("/sales-report", salesHandler.GetSalesReport).Methods("GET")
 
 	// Iniciar servidor
 	log.Println("Servidor iniciado en el puerto 8080")
