@@ -30,17 +30,29 @@ func main() {
 
 	// Inicializar repositorios
 	userRepo := repositories.NewUserRepository(dbInstance)
+	artistRepo := repositories.NewArtistRepository(dbInstance)
 
 	// Inicializar handlers
 	userHandler := handlers.NewUserHandler(userRepo)
+	artistHandler := handlers.NewArtistHandler(artistRepo)
 
 	// Configurar enrutador
 	router := mux.NewRouter()
 
 	// Configurar endpoints
-	router.HandleFunc("/test/users", userHandler.GetUsers).Methods("GET")
-	router.HandleFunc("/test/users", userHandler.CreateUser).Methods("POST")
-	router.HandleFunc("/test/users/{id}", userHandler.GetUser).Methods("GET")
+	//User
+	router.HandleFunc("/users", userHandler.GetUsers).Methods("GET")
+	router.HandleFunc("/users", userHandler.CreateUser).Methods("POST")
+	router.HandleFunc("/users/{id}", userHandler.GetUser).Methods("GET")
+	router.HandleFunc("/users/{id}", userHandler.UpdateUser).Methods("PUT")
+	router.HandleFunc("/users/{id}", userHandler.DeleteUser).Methods("DELETE")
+	//Artist
+	router.HandleFunc("/artists", artistHandler.GetArtists).Methods("GET")
+	router.HandleFunc("/artists", artistHandler.CreateArtist).Methods("POST")
+	router.HandleFunc("/artists/{id}", artistHandler.GetArtist).Methods("GET")
+	router.HandleFunc("/artists/{id}", artistHandler.UpdateArtist).Methods("PUT")
+	router.HandleFunc("/artists/{id}", artistHandler.DeleteArtist).Methods("DELETE")
+
 
 	// Iniciar servidor
 	log.Println("Servidor iniciado en el puerto 8080")
