@@ -26,9 +26,29 @@
             <h2>Ventas Filtradas</h2>
             <div class="filtros">
                 <input type="text" placeholder="Fecha Inicio" id="fecha_inicio">
-                <input type="text" placeholder="Método de Pago" id="metodo_pago">
-                <input type="text" placeholder="País del Artista" id="pais_artista">
-                <input type="text" placeholder="Estado de Envío" id="estado_envio">
+
+                <input type="text" placeholder="Método de Pago" id="metodo_pago" list="metodo_pago_opciones">
+                <datalist id="metodo_pago_opciones">
+                    <option value="tarjeta">
+                    <option value="transferencia">
+                    <option value="paypal">
+                </datalist>
+
+                <input type="text" placeholder="País del Artista" id="pais_artista" list="pais_artista_opciones">
+                <datalist id="pais_artista_opciones">
+                    <option value="México">
+                    <option value="Argentina">
+                    <option value="Guatemala">
+                    <option value="Colombia">
+                    <option value="Chile">
+                </datalist>
+
+                <input type="text" placeholder="Estado de Envío" id="estado_envio" list="estado_envio_opciones">
+                <datalist id="estado_envio_opciones">
+                    <option value="pendiente">
+                    <option value="enviado">
+                </datalist>
+
                 <button>Filtrar</button>
             </div>
 
@@ -45,11 +65,8 @@
                             <th>Fecha Venta</th>
                             <th>Estado de Envío</th>
                         </tr>
-
                     </thead>
-                    <tbody>
-                   
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </section>
