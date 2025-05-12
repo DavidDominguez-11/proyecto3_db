@@ -20,7 +20,7 @@ END $$;
 DO $$
 DECLARE
     uid INT;
-    paises TEXT[] := ARRAY['México', 'Argentina', 'España', 'Colombia', 'Chile'];
+    paises TEXT[] := ARRAY['México', 'Argentina', 'Guatemala', 'Colombia', 'Chile'];
     estilos TEXT[] := ARRAY['Impresionismo', 'Cubismo', 'Surrealismo', 'Realismo', 'Pop Art', 'Minimalismo', 'Expresionismo', 'Arte abstracto'];
     pais TEXT;
     estilo TEXT;
