@@ -20,10 +20,23 @@ END $$;
 DO $$
 DECLARE
     uid INT;
+    paises TEXT[] := ARRAY['México', 'Argentina', 'España', 'Colombia', 'Chile'];
+    estilos TEXT[] := ARRAY['Impresionismo', 'Cubismo', 'Surrealismo', 'Realismo', 'Pop Art', 'Minimalismo', 'Expresionismo', 'Arte abstracto'];
+    pais TEXT;
+    estilo TEXT;
 BEGIN
     FOR uid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'vendedor' LIMIT 30 LOOP
+        -- Elegir aleatoriamente país y estilo
+        pais := paises[1 + floor(random() * array_length(paises, 1))::int];
+        estilo := estilos[1 + floor(random() * array_length(estilos, 1))::int];
+
         INSERT INTO PerfilArtista (usuario_id, biografia, pais_origen, estilo_principal)
-        VALUES (uid, 'Biografía del artista ' || uid, 'País' || uid, 'Estilo' || uid);
+        VALUES (
+            uid,
+            'Biografía del artista ' || uid,
+            pais,
+            estilo
+        );
     END LOOP;
 END $$;
 
@@ -31,12 +44,11 @@ END $$;
 --Datos Categoria
 DO $$
 BEGIN
-    FOR i IN 1..100 LOOP
+    FOR i IN 1..10 LOOP
         INSERT INTO Categoria (nombre, descripcion)
         VALUES ('Categoria' || i, 'Descripción de la categoría ' || i);
     END LOOP;
 END $$;
-
 
 --Datos ObraArte
 DO $$
@@ -70,7 +82,7 @@ DECLARE
 BEGIN
     FOR oid IN SELECT obra_id FROM ObraArte LOOP
         INSERT INTO ObraCategoria (obra_id, categoria_id)
-        VALUES (oid, ((oid - 1) % 100) + 1);
+        VALUES (oid, ((oid - 1) % 10) + 1);
     END LOOP;
 END $$;
 
@@ -82,7 +94,7 @@ DECLARE
     oid INT;
     i INT := 1;
 BEGIN
-    FOR cid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'comprador' LIMIT 50 LOOP
+    FOR cid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'comprador' LIMIT 40 LOOP
         SELECT obra_id INTO oid FROM ObraArte WHERE estado = 'en venta' LIMIT 1;
         INSERT INTO Venta (usuario_id, obra_id, fecha_venta, monto, metodo_pago)
         VALUES (
@@ -101,14 +113,22 @@ END $$;
 DO $$
 DECLARE
     vid INT;
+    estado TEXT;
 BEGIN
     FOR vid IN SELECT venta_id FROM Venta LOOP
+        -- Determinar el estado aleatoriamente
+        IF random() < 0.4 THEN
+            estado := 'enviado';
+        ELSE
+            estado := 'pendiente';
+        END IF;
+
         INSERT INTO Envio (venta_id, direccion, fecha_envio, estado_envio)
         VALUES (
             vid,
             'Dirección de envío para venta ' || vid,
             CURRENT_DATE + INTERVAL '1 day',
-            'pendiente'
+            estado
         );
     END LOOP;
 END $$;

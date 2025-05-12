@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS Envio (
     venta_id INT NOT NULL UNIQUE,
     direccion TEXT NOT NULL,
     fecha_envio DATE,
-    estado_envio VARCHAR(20) CHECK (estado_envio IN ('pendiente', 'enviado', 'entregado')),
+    estado_envio VARCHAR(20) CHECK (estado_envio IN ('pendiente', 'enviado')),
     FOREIGN KEY (venta_id) REFERENCES Venta(venta_id)
 );
 
@@ -190,3 +190,19 @@ CREATE TRIGGER trg_validar_fechas_subasta
 BEFORE INSERT ON Subasta
 FOR EACH ROW
 EXECUTE FUNCTION validar_fechas_subasta();
+
+-- Cambiar el estado de la obra a 'subasta'
+CREATE OR REPLACE FUNCTION actualizar_estado_obra_subasta()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE ObraArte
+    SET estado = 'subasta'
+    WHERE obra_id = NEW.obra_id;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_actualizar_estado_obra_subasta
+AFTER INSERT ON Subasta
+FOR EACH ROW
+EXECUTE FUNCTION actualizar_estado_obra_subasta();

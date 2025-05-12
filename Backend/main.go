@@ -32,12 +32,20 @@ func main() {
 	userRepo := repositories.NewUserRepository(dbInstance)
 	artistRepo := repositories.NewArtistRepository(dbInstance)
 	artworkRepo := repositories.NewArtworkRepository(dbInstance)
-
+	saleRepo := repositories.NewSaleRepository(dbInstance)// para filtro Ventas Realizadas
+	auctionRepo := repositories.NewAuctionRepository(dbInstance)// filtro Ofertas por Subasta
+	transactionRepo := repositories.NewTransactionRepository(dbInstance) //filtro Transacciones del Sistema
+	categoryRepo := repositories.NewCategoryRepository(dbInstance) //filtro Reporte de Obras por Categoría y Popularidad
+	
 	// Inicializar handlers
 	userHandler := handlers.NewUserHandler(userRepo)
 	artistHandler := handlers.NewArtistHandler(artistRepo)
 	artworkHandler := handlers.NewArtworkHandler(artworkRepo)
-
+	salesHandler := handlers.NewSalesHandler(saleRepo)// para filtro Ventas Realizadas
+	auctionHandler := handlers.NewAuctionHandler(auctionRepo)// filtro Ofertas por Subasta
+	transactionHandler := handlers.NewTransactionHandler(transactionRepo)//filtro Transacciones del Sistema
+	categoryHandler := handlers.NewCategoryHandler(categoryRepo) // filtro Reporte de Obras por Categoría y Popularidad
+	
 	// Configurar enrutador
 	router := mux.NewRouter()
 
@@ -60,6 +68,14 @@ func main() {
 	router.HandleFunc("/artworks/{id}", artworkHandler.GetArtwork).Methods("GET")
 	router.HandleFunc("/artworks/{id}", artworkHandler.UpdateArtwork).Methods("PUT")
 	router.HandleFunc("/artworks/{id}", artworkHandler.DeleteArtwork).Methods("DELETE")
+	
+	//Filtros
+	router.HandleFunc("/sales-report", salesHandler.GetSalesReport).Methods("GET") // Ventas Realizadas
+	router.HandleFunc("/auctions/{subasta_id}/offers", auctionHandler.GetAuctionOffers).Methods("GET") // filtro Ofertas por Subasta
+	router.HandleFunc("/artworks-report", artworkHandler.GetArtworkReport).Methods("GET")
+	router.HandleFunc("/transactions", transactionHandler.GetTransactions).Methods("GET")// filtro Transacciones del Sistema
+	router.HandleFunc("/category-artworks", categoryHandler.GetCategoryArtworks).Methods("GET")// filtro Reporte de Obras por Categoría y Popularidad
+
 
 	// Iniciar servidor
 	log.Println("Servidor iniciado en el puerto 8080")
