@@ -142,9 +142,12 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
+/* hover feo rosa 
 tr:hover {
     background-color: #f0e6ff;
 }
+*/
+
 
 /* Botón de acción principal */
 button {

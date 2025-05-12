@@ -25,32 +25,26 @@
         <section>
             <h2>Ventas Filtradas</h2>
             <div class="filtros">
-                <input type="text" placeholder="Fecha Inicio" id="fecha_inicio">
-                <input type="text" placeholder="Método de Pago" id="metodo_pago">
-                <input type="text" placeholder="País del Artista" id="pais_artista">
-                <select id="estado_envio">
-                    <option value="">Seleccione Estado de Envío</option>
-                    <option value="enviado">Enviado</option>
-                    <option value="pendiente">Pendiente</option>
-                    <option value="cancelado">Cancelado</option>
-                    <!-- Puedes agregar más opciones según sea necesario -->
-                </select>
-                <button>Filtrar</button>
+                <input type="text" placeholder="Tipo" id="tipo">
+                <input type="number" placeholder="ID Transacción" id="transaccion_id">
+                <input type="number" placeholder="ID Entidad Afectada" id="entidad_afectada_id">
+                <input type="datetime-local" placeholder="Fecha Inicio" id="fecha_inicio">
+                <button id="filtrar">Filtrar</button>
             </div>
 
             <div class="tabla-resultados">
                 <table>
                     <thead>
                         <tr>
-                            <th>ID Venta</th>
-                            <th>Método de Pago</th>
-                            <th>País del Artista</th>
-                            <th>Estado de Envío</th>
-                            <th>Fecha Venta</th>
+                            <th>ID Transacción</th>
+                            <th>Tipo</th>
+                            <th>Fecha</th>
+                            <th>ID Entidad Afectada</th>
+                            <th>Detalle</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Aquí van los resultados de las ventas -->
+                        <!-- Resultados -->
                     </tbody>
                 </table>
             </div>
