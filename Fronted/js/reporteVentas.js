@@ -34,6 +34,12 @@ document.querySelector('button').addEventListener('click', async function() {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
 
+    if (!ventas || ventas.length === 0) {
+        alert("No se encontraron ventas con los filtros seleccionados.");
+        return;
+    }
+
+
     ventas.forEach(venta => {
         const tr = document.createElement('tr');
         tr.innerHTML = `

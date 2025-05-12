@@ -37,6 +37,11 @@ document.querySelector('button').addEventListener('click', async function() {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
 
+    if (!obras || obras.length === 0) {
+        alert("No se encontraron obras con los filtros seleccionados.");
+        return;
+    }
+
     obras.forEach(obra => {
         const tr = document.createElement('tr');
         tr.innerHTML = `

@@ -39,7 +39,10 @@ document.querySelector('button').addEventListener('click', async function () {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
 
-//aqui 
+    if (!ofertas || ofertas.length === 0) {
+        alert("No se encontraron ofertas con los filtros seleccionados.");
+        return;
+    }
 
     ofertas.forEach(oferta => {
         const tr = document.createElement('tr');

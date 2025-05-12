@@ -34,6 +34,11 @@ document.getElementById('filtrar').addEventListener('click', async () => {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
 
+    if (!transacciones || transacciones.length === 0) {
+        alert("No se encontraron transacciones con los filtros seleccionados.");
+        return;
+    }
+
     transacciones.forEach(transaccion => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
