@@ -24,6 +24,11 @@ document.querySelector('button').addEventListener('click', async function() {
     const estado = document.getElementById('estado').value;
     const artista_id = document.getElementById('artista_id').value;
 
+    if (!categoria_id) {
+    alert("Por favor ingresa el ID de la categoria.");
+    return;
+    }
+
     const obras = await obtenerObrasPorCategoria({
         categoriaId: categoria_id,
         precioMax: precio_max,

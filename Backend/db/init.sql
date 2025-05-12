@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS ObraArte (
     descripcion TEXT,
     año_creacion INT CHECK (año_creacion > 1000),
     precio_referencia NUMERIC(10,2) DEFAULT 0,
-    estado VARCHAR(20) NOT NULL CHECK (estado IN ('en venta', 'subasta', 'vendida', 'reservada')),
+    estado VARCHAR(20) NOT NULL CHECK (estado IN ('en venta', 'subasta', 'vendida')),
     artista_id INT NOT NULL,
     FOREIGN KEY (artista_id) REFERENCES PerfilArtista(artista_id)
 );
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS Envio (
 -- Tabla Transaccion (para registrar eventos automáticos)
 CREATE TABLE IF NOT EXISTS Transaccion (
     transaccion_id SERIAL PRIMARY KEY,
-    tipo VARCHAR(30) NOT NULL CHECK (tipo IN ('venta', 'subasta_ganada', 'oferta', 'cambio_estado')),
+    tipo VARCHAR(30) NOT NULL CHECK (tipo IN ('venta', 'oferta')),
     detalle TEXT NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     entidad_afectada_id INT NOT NULL -- puede hacer referencia a obra_id, venta_id, etc. (flexible)

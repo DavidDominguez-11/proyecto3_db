@@ -39,6 +39,8 @@ document.querySelector('button').addEventListener('click', async function () {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
 
+//aqui 
+
     ofertas.forEach(oferta => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
