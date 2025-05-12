@@ -8,21 +8,19 @@
 </head>
 <body>
     <header>
-        <!-- Botón de regreso -->
-        <a href="index.html" class="regresar">&#8592; Regresar</a>
         <h1>Reporte de Ofertas por Subasta</h1>
         <div class="menu-toggle">&#9776;</div>
+        <a href="index.html" class="regresar-btn">&#8592; Regresar</a>
     </header>
 
-    <!-- Side menu -->
-  <div class="side-menu" id="sideMenu">
-    <a href="reporte-ventas.html">Ventas Realizadas</a>
-    <a href="reporte-ofertas.html">Ofertas por Subasta</a>
-    <a href="reporte-obras.html">Obras por Estado</a>
-    <a href="reporte-transacciones.html">Transacciones</a>
-    <a href="reporte-categoria.html">Reporte de categorias</a>
-  </div>
-
+    <!-- Side-menu -->
+    <div class="side-menu" id="sideMenu">
+        <a href="reporte-ventas.html">Ventas Realizadas</a>
+        <a href="reporte-ofertas.html">Ofertas por Subasta</a>
+        <a href="reporte-obras.html">Obras por Estado</a>
+        <a href="reporte-transacciones.html">Transacciones</a>
+        <a href="reporte-categoria.html">Reporte de Categorías</a>
+    </div>
 
     <main>
         <section>
@@ -60,10 +58,9 @@
     </footer>
 
     <script>
-        const menuToggle = document.querySelector('.menu-toggle'); // Icono de hamburguesa
-        const sideMenu = document.getElementById('sideMenu'); // Menú lateral
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.getElementById('sideMenu');
 
-        // Abrir y cerrar el menú lateral al hacer clic en el icono de hamburguesa
         menuToggle.addEventListener('click', () => {
             sideMenu.classList.toggle('active');
         });
