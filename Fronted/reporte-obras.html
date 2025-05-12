@@ -10,17 +10,16 @@
     <header>
         <h1>Reporte de Obras por Estado</h1>
         <div class="menu-toggle">&#9776;</div>
-        <a href="index.html" class="regresar-btn">&#8592; Regresar</a> <!-- Botón de regreso -->
+        <a href="index.html" class="regresar-btn">&#8592; Regresar</a>
     </header>
 
-    <!-- Side-menu -->
-  <div class="side-menu" id="sideMenu">
-    <a href="reporte-ventas.html">Ventas Realizadas</a>
-    <a href="reporte-ofertas.html">Ofertas por Subasta</a>
-    <a href="reporte-obras.html">Obras por Estado</a>
-    <a href="reporte-transacciones.html">Transacciones</a>
-    <a href="reporte-categoria.html">Reporte de categorias</a>
-  </div>
+    <div class="side-menu" id="sideMenu">
+        <a href="reporte-ventas.html">Ventas Realizadas</a>
+        <a href="reporte-ofertas.html">Ofertas por Subasta</a>
+        <a href="reporte-obras.html">Obras por Estado</a>
+        <a href="reporte-transacciones.html">Transacciones</a>
+        <a href="reporte-categoria.html">Reporte de categorias</a>
+    </div>
 
     <main>
         <section>
@@ -60,13 +59,13 @@
     </footer>
 
     <script>
-        // Abrir y cerrar el side-menu con el icono de hamburguesa
         const menuToggle = document.querySelector('.menu-toggle');
         const sideMenu = document.getElementById('sideMenu');
-
         menuToggle.addEventListener('click', () => {
             sideMenu.classList.toggle('active');
         });
     </script>
+
+    <script src="js/reporte-obras.js"></script>
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Transacciones del Sistema</title>
+    <title>Reporte de Ventas Realizadas</title>
     <link rel="stylesheet" href="reports.css">
 </head>
 <body>
     <header>
-        <h1>Reporte de Transacciones del Sistema</h1>
+        <a href="index.html" class="regresar">&#8592; Regresar</a>
+        <h1>Reporte de Ventas Realizadas</h1>
         <div class="menu-toggle">&#9776;</div>
-        <a href="index.html" class="regresar-btn">&#8592; Regresar</a>
     </header>
 
     <div class="side-menu" id="sideMenu">
@@ -18,17 +18,23 @@
         <a href="reporte-ofertas.html">Ofertas por Subasta</a>
         <a href="reporte-obras.html">Obras por Estado</a>
         <a href="reporte-transacciones.html">Transacciones</a>
-        <a href="reporte-categoria.html">Reporte de categorias</a>
+        <a href="reporte-categoria.html">Reporte de categorías</a>
     </div>
 
     <main>
         <section>
-            <h2>Transacciones Filtradas</h2>
+            <h2>Ventas Filtradas</h2>
             <div class="filtros">
-                <input type="text" placeholder="Tipo de Transacción" id="tipo">
-                <input type="text" placeholder="ID Transacción" id="transaccion_id">
-                <input type="text" placeholder="ID Entidad Afectada" id="entidad_afectada_id">
                 <input type="text" placeholder="Fecha Inicio" id="fecha_inicio">
+                <input type="text" placeholder="Método de Pago" id="metodo_pago">
+                <input type="text" placeholder="País del Artista" id="pais_artista">
+                <select id="estado_envio">
+                    <option value="">Seleccione Estado de Envío</option>
+                    <option value="enviado">Enviado</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="cancelado">Cancelado</option>
+                    <!-- Puedes agregar más opciones según sea necesario -->
+                </select>
                 <button>Filtrar</button>
             </div>
 
@@ -36,15 +42,15 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID Transacción</th>
-                            <th>Tipo</th>
-                            <th>Fecha</th>
-                            <th>Entidad Afectada</th>
-                            <th>Detalle</th>
+                            <th>ID Venta</th>
+                            <th>Método de Pago</th>
+                            <th>País del Artista</th>
+                            <th>Estado de Envío</th>
+                            <th>Fecha Venta</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Aquí van los resultados de las transacciones -->
+                        <!-- Aquí van los resultados de las ventas -->
                     </tbody>
                 </table>
             </div>
@@ -58,10 +64,11 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const sideMenu = document.getElementById('sideMenu');
-
         menuToggle.addEventListener('click', () => {
             sideMenu.classList.toggle('active');
         });
     </script>
+
+    <script src="js/reporte-ventas.js"></script>
 </body>
 </html>
