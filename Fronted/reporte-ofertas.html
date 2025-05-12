@@ -8,18 +8,17 @@
 </head>
 <body>
     <header>
+        <a href="index.html" class="regresar">&#8592; Regresar</a>
         <h1>Reporte de Ofertas por Subasta</h1>
         <div class="menu-toggle">&#9776;</div>
-        <a href="index.html" class="regresar-btn">&#8592; Regresar</a>
     </header>
 
-    <!-- Side-menu -->
     <div class="side-menu" id="sideMenu">
         <a href="reporte-ventas.html">Ventas Realizadas</a>
         <a href="reporte-ofertas.html">Ofertas por Subasta</a>
         <a href="reporte-obras.html">Obras por Estado</a>
         <a href="reporte-transacciones.html">Transacciones</a>
-        <a href="reporte-categoria.html">Reporte de Categorías</a>
+        <a href="reporte-categoria.html">Reporte de categorias</a>
     </div>
 
     <main>
@@ -27,7 +26,6 @@
             <h2>Ofertas Filtradas</h2>
             <div class="filtros">
                 <input type="text" placeholder="Fecha Inicio" id="fecha_inicio">
-                <input type="text" placeholder="Fecha Fin" id="fecha_fin">
                 <input type="text" placeholder="Monto Mínimo" id="monto_min">
                 <input type="text" placeholder="ID Usuario" id="usuario_id">
                 <button>Filtrar</button>
@@ -60,10 +58,11 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const sideMenu = document.getElementById('sideMenu');
-
         menuToggle.addEventListener('click', () => {
             sideMenu.classList.toggle('active');
         });
     </script>
+
+    <script src="js/reporte-ofertas.js"></script>
 </body>
 </html>
