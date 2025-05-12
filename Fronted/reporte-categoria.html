@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Ofertas por Subasta</title>
+    <title>Reporte de Obras por Categoría</title>
     <link rel="stylesheet" href="reports.css">
 </head>
 <body>
     <header>
-        <!-- Botón de regreso -->
-        <a href="index.html" class="regresar">&#8592; Regresar</a>
-        <h1>Reporte de Ofertas por Subasta</h1>
+        <h1>Reporte de Obras por Categoría y Popularidad</h1>
         <div class="menu-toggle">&#9776;</div>
+        <a href="index.html" class="regresar-btn">&#8592; Regresar</a>
     </header>
 
-    <!-- Side menu -->
+    <!-- Side-menu -->
   <div class="side-menu" id="sideMenu">
     <a href="reporte-ventas.html">Ventas Realizadas</a>
     <a href="reporte-ofertas.html">Ofertas por Subasta</a>
@@ -22,16 +21,14 @@
     <a href="reporte-transacciones.html">Transacciones</a>
     <a href="reporte-categoria.html">Reporte de categorias</a>
   </div>
-
-
     <main>
         <section>
-            <h2>Ofertas Filtradas</h2>
+            <h2>Obras Filtradas</h2>
             <div class="filtros">
-                <input type="text" placeholder="Fecha Inicio" id="fecha_inicio">
-                <input type="text" placeholder="Fecha Fin" id="fecha_fin">
-                <input type="text" placeholder="Monto Mínimo" id="monto_min">
-                <input type="text" placeholder="ID Usuario" id="usuario_id">
+                <input type="text" placeholder="Categoría ID" id="categoria_id">
+                <input type="text" placeholder="Precio Máximo" id="precio_max">
+                <input type="text" placeholder="Estado" id="estado">
+                <input type="text" placeholder="ID Artista" id="artista_id">
                 <button>Filtrar</button>
             </div>
 
@@ -39,16 +36,18 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID Oferta</th>
-                            <th>Subasta ID</th>
-                            <th>Obra</th>
-                            <th>Ofertante</th>
-                            <th>Monto Ofertado</th>
-                            <th>Fecha Oferta</th>
+                            <th>ID Categoría</th>
+                            <th>Categoría</th>
+                            <th>ID Obra</th>
+                            <th>Título</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>ID Artista</th>
+                            <th>Total Ventas</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Aquí van los resultados de las ofertas -->
+                        <!-- Aquí van los resultados de las obras -->
                     </tbody>
                 </table>
             </div>
@@ -60,10 +59,9 @@
     </footer>
 
     <script>
-        const menuToggle = document.querySelector('.menu-toggle'); // Icono de hamburguesa
-        const sideMenu = document.getElementById('sideMenu'); // Menú lateral
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.getElementById('sideMenu');
 
-        // Abrir y cerrar el menú lateral al hacer clic en el icono de hamburguesa
         menuToggle.addEventListener('click', () => {
             sideMenu.classList.toggle('active');
         });

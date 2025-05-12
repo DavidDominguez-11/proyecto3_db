@@ -2,16 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f2f2f2a0;
     color: #333;
-  }
-  
-  /* Navbar */
-  header {
+}
+
+/* Navbar */
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,35 +20,35 @@
     padding: 20px 30px;
     position: relative;
     z-index: 1001;
-  }
-  
-  .logo {
+}
+
+.logo {
     font-size: 30px;
     font-weight: bold;
-  }
-  
-  .nav-links {
+}
+
+.nav-links {
     display: flex;
     gap: 20px;
-  }
-  
-  .nav-links a {
+}
+
+.nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 500;
-  }
-  
-  /* Botón hamburguesa */
-  .menu-toggle {
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
     font-size: 28px;
     cursor: pointer;
     display: block;
     color: white;
     z-index: 1002;
-  }
-  
-  /* Menú lateral */
-  .side-menu {
+}
+
+/* Menú lateral */
+.side-menu {
     position: fixed;
     top: 0;
     right: -260px;
@@ -62,35 +62,35 @@
     gap: 20px;
     transition: right 0.3s ease;
     z-index: 1000;
-  }
-  
-  .side-menu.active {
+}
+
+.side-menu.active {
     right: 0;
-  }
-  
-  .side-menu a {
+}
+
+.side-menu a {
     color: white;
     text-decoration: none;
     font-size: 18px;
-  }
-  
-  /* Main content */
-  main {
+}
+
+/* Main content */
+main {
     padding: 40px;
-  }
-  
-  section h2 {
+}
+
+section h2 {
     margin-bottom: 35px;
     color: #4d443a;
-  }
-  
-  .card-container {
+}
+
+.card-container {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-  }
-  
-  .card {
+}
+
+.card {
     background-color: #7b654e3f;
     padding: 15px 20px;
     border-radius: 12px;
@@ -100,26 +100,26 @@
     width: 250px;
     transition: transform 0.2s;
     cursor: pointer;
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     transform: scale(1.05);
-  }
-  
-  .card img {
+}
+
+.card img {
     width: 100%;
     height: auto;
     border-radius: 10px;
     margin-bottom: 10px;
-  }
-  
-  .card p {
+}
+
+.card p {
     margin: 5px 0;
     color: rgb(0, 0, 0);
     font-weight: 400;
-  }
-  
-  .ver-mas {
+}
+
+.ver-mas {
     margin-top: 25px;
     padding: 10px 20px;
     background-color: #665b4f;
@@ -129,18 +129,17 @@
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease;
-  }
-  
-  .ver-mas:hover {
+}
+
+.ver-mas:hover {
     background-color: #f8bd83;
-  }
-  
-  /* Footer */
-  footer {
+}
+
+/* Footer */
+footer {
     background-color: #665b4f ;
     color: white;
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-  }
-  
+}
