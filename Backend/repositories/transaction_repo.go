@@ -38,15 +38,21 @@ func (r *TransactionRepository) GetTransactions(filter models.TransactionFilter)
         argPos++
     }
     
-    if filter.FechaInicio != nil && filter.FechaFin != nil {
-        conditions = append(conditions, fmt.Sprintf("fecha BETWEEN $%d AND $%d", argPos, argPos+1))
-        args = append(args, filter.FechaInicio, filter.FechaFin)
-        argPos += 2
+    if filter.FechaInicio != nil {
+        conditions = append(conditions, fmt.Sprintf("fecha >= $%d", argPos))
+        args = append(args, filter.FechaInicio)
+        argPos++
     }
     
-    if filter.EntidadID > 0 {
+    if filter.TransaccionID > 0 {
+        conditions = append(conditions, fmt.Sprintf("transaccion_id = $%d", argPos))
+        args = append(args, filter.TransaccionID)
+        argPos++
+    }
+
+    if filter.EntidadAfectadaID > 0 {
         conditions = append(conditions, fmt.Sprintf("entidad_afectada_id = $%d", argPos))
-        args = append(args, filter.EntidadID)
+        args = append(args, filter.EntidadAfectadaID)
         argPos++
     }
 

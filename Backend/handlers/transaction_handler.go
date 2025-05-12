@@ -31,15 +31,18 @@ func (h *TransactionHandler) GetTransactions(w http.ResponseWriter, r *http.Requ
         }
     }
     
-    if fechaFin := q.Get("fecha_fin"); fechaFin != "" {
-        if t, err := time.Parse(time.RFC3339, fechaFin); err == nil {
-            filter.FechaFin = &t
-        }
+    if transaccionID := q.Get("transaccion_id"); transaccionID != "" {
+        if id, err := strconv.Atoi(transaccionID); err == nil {
+            filter.TransaccionID = id
+        } else {
+            http.Error(w, "transaccion_id inválido", http.StatusBadRequest)
+            return
     }
-    
-    if entidadID := q.Get("entidad_id"); entidadID != "" {
-        if id, err := strconv.Atoi(entidadID); err == nil {
-            filter.EntidadID = id
+}
+
+    if entidadAfectadaID := q.Get("entidad_afectada_id"); entidadAfectadaID != "" {
+        if id, err := strconv.Atoi(entidadAfectadaID); err == nil {
+            filter.EntidadAfectadaID = id
         }
     }
 

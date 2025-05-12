@@ -12,8 +12,8 @@ type Transaction struct {
 }
 
 type TransactionFilter struct {
-    Tipo              string     `form:"tipo"`
-    FechaInicio       *time.Time `form:"fecha_inicio"`
-    FechaFin          *time.Time `form:"fecha_fin"`
-    EntidadID         int        `form:"entidad_id"`
+    TransaccionID      int        `form:"transaccion_id"`
+    Tipo               string     `form:"tipo"`
+    FechaInicio        *time.Time `form:"fecha_inicio"`
+    EntidadAfectadaID  int        `form:"entidad_afectada_id"`
 }
