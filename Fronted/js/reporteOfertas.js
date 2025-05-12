@@ -5,7 +5,7 @@ async function obtenerOfertas({ fechaInicio, montoMin, usuarioId }) {
     if (montoMin) params.append('monto_min', montoMin);
     if (usuarioId) params.append('usuario_id', usuarioId);
 
-    const url = `http://127.0.0.1:8080/auctions/11/offers?${params.toString()}`;
+    const url = `http://127.0.0.1:8080/auctions/?/offers?${params.toString()}`;
 
     try {
         const respuesta = await fetch(url);

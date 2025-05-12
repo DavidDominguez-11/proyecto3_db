@@ -78,6 +78,13 @@ func main() {
 
 
 	// Iniciar servidor
+	//log.Println("Servidor iniciado en el puerto 8080")
+	//log.Fatal(http.ListenAndServe(":8080", router))
+
+	//log.Fatal(http.ListenAndServe(":8080", router))
+	// Iniciar servidor
 	log.Println("Servidor iniciado en el puerto 8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", configureCORS()(router)))
+
+
 }
