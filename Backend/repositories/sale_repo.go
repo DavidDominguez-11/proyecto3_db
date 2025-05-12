@@ -40,10 +40,10 @@ func (r *SaleRepository) GetSalesReport(filter models.SalesReportFilter) ([]mode
     argPos := 1
 
     // Filtros dinámicos
-    if filter.FechaInicio != nil && filter.FechaFin != nil {
-        conditions = append(conditions, fmt.Sprintf("v.fecha_venta BETWEEN $%d AND $%d", argPos, argPos+1))
-        args = append(args, *filter.FechaInicio, *filter.FechaFin)
-        argPos += 2
+    if filter.FechaInicio != nil {
+        conditions = append(conditions, fmt.Sprintf("v.fecha_venta >= $%d", argPos))
+        args = append(args, *filter.FechaInicio)
+        argPos++
     }
     
     if filter.MetodoPago != "" {

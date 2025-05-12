@@ -29,12 +29,6 @@ func (h *SalesHandler) GetSalesReport(w http.ResponseWriter, r *http.Request) {
         }
     }
     
-    if fechaFin := q.Get("fecha_fin"); fechaFin != "" {
-        if t, err := time.Parse(time.RFC3339, fechaFin); err == nil {
-            filter.FechaFin = &t
-        }
-    }
-    
     filter.MetodoPago = q.Get("metodo_pago")
     filter.PaisArtista = q.Get("pais_artista")
     filter.EstadoEnvio = q.Get("estado_envio")

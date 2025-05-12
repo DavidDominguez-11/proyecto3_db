@@ -16,7 +16,6 @@ type SalesReportItem struct {
 
 type SalesReportFilter struct {
     FechaInicio   *time.Time `form:"fecha_inicio"`
-    FechaFin      *time.Time `form:"fecha_fin"`
     MetodoPago    string     `form:"metodo_pago"`
     PaisArtista   string     `form:"pais_artista"`
     EstadoEnvio   string     `form:"estado_envio"`
