@@ -81,7 +81,7 @@ DECLARE
     oid INT;
     i INT := 1;
 BEGIN
-    FOR cid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'comprador' LIMIT 50 LOOP
+    FOR cid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'comprador' LIMIT 40 LOOP
         SELECT obra_id INTO oid FROM ObraArte WHERE estado = 'en venta' LIMIT 1;
         INSERT INTO Venta (usuario_id, obra_id, fecha_venta, monto, metodo_pago)
         VALUES (
@@ -100,14 +100,22 @@ END $$;
 DO $$
 DECLARE
     vid INT;
+    estado TEXT;
 BEGIN
     FOR vid IN SELECT venta_id FROM Venta LOOP
+        -- Determinar el estado aleatoriamente
+        IF random() < 0.4 THEN
+            estado := 'enviado';
+        ELSE
+            estado := 'pendiente';
+        END IF;
+
         INSERT INTO Envio (venta_id, direccion, fecha_envio, estado_envio)
         VALUES (
             vid,
             'Dirección de envío para venta ' || vid,
             CURRENT_DATE + INTERVAL '1 day',
-            'pendiente'
+            estado
         );
     END LOOP;
 END $$;
