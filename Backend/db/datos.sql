@@ -20,10 +20,23 @@ END $$;
 DO $$
 DECLARE
     uid INT;
+    paises TEXT[] := ARRAY['México', 'Argentina', 'España', 'Colombia', 'Chile'];
+    estilos TEXT[] := ARRAY['Impresionismo', 'Cubismo', 'Surrealismo', 'Realismo', 'Pop Art', 'Minimalismo', 'Expresionismo', 'Arte abstracto'];
+    pais TEXT;
+    estilo TEXT;
 BEGIN
     FOR uid IN SELECT usuario_id FROM Usuario WHERE tipo_usuario = 'vendedor' LIMIT 30 LOOP
+        -- Elegir aleatoriamente país y estilo
+        pais := paises[1 + floor(random() * array_length(paises, 1))::int];
+        estilo := estilos[1 + floor(random() * array_length(estilos, 1))::int];
+
         INSERT INTO PerfilArtista (usuario_id, biografia, pais_origen, estilo_principal)
-        VALUES (uid, 'Biografía del artista ' || uid, 'País' || uid, 'Estilo' || uid);
+        VALUES (
+            uid,
+            'Biografía del artista ' || uid,
+            pais,
+            estilo
+        );
     END LOOP;
 END $$;
 
