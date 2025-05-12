@@ -37,10 +37,10 @@ func (r *AuctionRepository) GetAuctionOffers(filter models.AuctionOffersFilter) 
     argPos := 2
 
     // Filtros dinámicos
-    if filter.FechaInicio!=nil && filter.FechaFin!=nil {
-        conditions = append(conditions, fmt.Sprintf("os.fecha_oferta BETWEEN $%d AND $%d", argPos, argPos+1))
-        args = append(args, filter.FechaInicio, filter.FechaFin)
-        argPos += 2
+    if filter.FechaInicio != nil {
+        conditions = append(conditions, fmt.Sprintf("os.fecha_oferta >= $%d", argPos))
+        args = append(args, filter.FechaInicio)
+        argPos++
     }
     
     if filter.MontoMin > 0 {

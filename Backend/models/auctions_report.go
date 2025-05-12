@@ -17,5 +17,4 @@ type AuctionOffersFilter struct {
     UsuarioID   int        `form:"usuario_id"`
     MontoMin    float64    `form:"monto_min"`
     FechaInicio *time.Time `form:"fecha_inicio"`
-    FechaFin    *time.Time `form:"fecha_fin"`
 }

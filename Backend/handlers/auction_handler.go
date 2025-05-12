@@ -47,12 +47,6 @@ func (h *AuctionHandler) GetAuctionOffers(w http.ResponseWriter, r *http.Request
             filter.FechaInicio = &t
         }
     }
-    
-    if fechaFin := q.Get("fecha_fin"); fechaFin != "" {
-        if t, err := time.Parse(time.RFC3339, fechaFin); err == nil {
-            filter.FechaFin = &t
-        }
-    }
 
     offers, err := h.repo.GetAuctionOffers(filter)
     if err != nil {
