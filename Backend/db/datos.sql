@@ -31,12 +31,11 @@ END $$;
 --Datos Categoria
 DO $$
 BEGIN
-    FOR i IN 1..100 LOOP
+    FOR i IN 1..10 LOOP
         INSERT INTO Categoria (nombre, descripcion)
         VALUES ('Categoria' || i, 'Descripción de la categoría ' || i);
     END LOOP;
 END $$;
-
 
 --Datos ObraArte
 DO $$
@@ -70,7 +69,7 @@ DECLARE
 BEGIN
     FOR oid IN SELECT obra_id FROM ObraArte LOOP
         INSERT INTO ObraCategoria (obra_id, categoria_id)
-        VALUES (oid, ((oid - 1) % 100) + 1);
+        VALUES (oid, ((oid - 1) % 10) + 1);
     END LOOP;
 END $$;
 
