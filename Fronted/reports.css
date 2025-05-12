@@ -1,0 +1,228 @@
+/* Estilos base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f8;
+    color: #333;
+}
+
+/* Encabezado */
+header {
+    background-color: #665b4f;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Menú tipo hamburguesa */
+.menu-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    z-index: 1100;
+}
+
+.menu-toggle:hover {
+    color: #f8bd83;
+}
+
+/* Menú lateral desplegable */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 200px;
+    height: 100%;
+    background-color: #3f3b36;
+    color: white;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.side-menu a {
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    border-bottom: 1px solid #544f49;
+    font-size: 1rem;
+}
+
+.side-menu a:hover {
+    background-color: #574d44;
+    color: #f8bd83;
+}
+
+/* Botón volver (si decides usarlo en lugar del menú) */
+.back-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.back-menu a {
+    text-decoration: none;
+    color: #8e8989;
+}
+
+.back-menu:hover {
+    background-color: #f0f0f0;
+    color: #665b4f;
+}
+
+/* Contenido principal */
+main {
+    padding: 2rem;
+    margin-top: 60px; /* Aseguramos que no se solape con el header */
+}
+
+/* Filtros */
+.filtros {
+    margin-bottom: 1.5rem;
+}
+
+.filtros input[type="text"] {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Tabla de resultados */
+.tabla-resultados {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #665b4fa1;
+    color: white;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f0e6ff;
+}
+
+/* Botón de acción principal */
+button {
+    padding: 0.8rem 1.5rem;
+    background-color: #665b4f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f8bd83;
+}
+
+/* Mejora en el tamaño de la fuente */
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: #4d443a;
+}
+
+/* Mejora en la legibilidad */
+p {
+    line-height: 1.6;
+}
+
+/* Añadir más consistencia en las tarjetas (si las usas en futuras pantallas) */
+.card {
+    padding: 1rem;
+    background-color: #7b654e3f;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    width: 250px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    margin: 0.5rem 0;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .filtros input[type="text"] {
+        width: 100%;
+    }
+
+    .side-menu {
+        width: 250px;
+    }
+
+    .side-menu a {
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        font-size: 2rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+}
