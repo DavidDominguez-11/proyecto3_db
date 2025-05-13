@@ -8,6 +8,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f2f2f2a0;
     color: #333;
+    height: 100vh;
 }
 
 /* Navbar */
@@ -22,9 +23,15 @@ header {
     z-index: 1001;
 }
 
+.galeria a{
+    text-decoration: none;
+    color:#665b4f;
+}
+
 .logo {
     font-size: 30px;
     font-weight: bold;
+
 }
 
 .nav-links {
@@ -136,10 +143,14 @@ section h2 {
 }
 
 /* Footer */
+/* Footer */
 footer {
-    background-color: #665b4f ;
+    background-color: #665b4f;
     color: white;
     text-align: center;
     padding: 20px;
-    margin-top: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
+
