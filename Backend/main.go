@@ -15,8 +15,8 @@ import (
 func main() {
 	// Configuración de la base de datos
 	config := db.NewDBConfig()
-	config.Host = "localhost"
-	config.Port = "5435"
+	config.Host = "db"
+	config.Port = "5432"
 	config.User = "dbuser"
 	config.Password = "dbpassword"
 	config.DBName = "p3db"
