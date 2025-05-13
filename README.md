@@ -48,6 +48,10 @@ cd proyecto3_db
 docker-compose up --build
 ir a: http://localhost:8000/ o http://127.0.0.1:8000/
 ```
+En la pantalla principal, elige el filtro deseado. Esto dirige a la pantalla del filtro.  
+Agrega los filtros deseados. Cuando alguno sea requerido al momento de filtrar mediante el botón "Filtrar", saldrá una advertencia si falta alguno o si algún valor no es correcto.  
+Para ver todos los datos, filtra sin parámetros y solo agrega el necesario si se requiere.  
+
 3. **Parar y ejecutar de nuevo:**
 ```bash
 ctrl + c
