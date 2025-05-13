@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reporte de Categorías</title>
-  <link rel="stylesheet" href="reports.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Obras por Categoría</title>
+    <link rel="stylesheet" href="reports.css">
 </head>
 <body>
-  <header>
-    <a href="index.html" class="regresar">&#8592; Regresar</a>
-    <h1>Reporte de Categorías</h1>
-    <div class="menu-toggle">&#9776;</div>
-  </header>
+    <header>
+        <h1>Reporte de Obras por Categoría y Popularidad</h1>
+        <div class="menu-toggle">&#9776;</div>
+        <a href="index.html" class="regresar-btn">&#8592; Regresar</a>
+    </header>
 
-  <div class="side-menu" id="sideMenu">
-    <a href="reporte-ventas.html">Ventas Realizadas</a>
-    <a href="reporte-ofertas.html">Ofertas por Subasta</a>
-    <a href="reporte-obras.html">Obras por Estado</a>
-    <a href="reporte-transacciones.html">Transacciones</a>
-    <a href="reporte-categoria.html">Reporte de categorías</a>
-  </div>
+    <div class="side-menu" id="sideMenu">
+        <a href="reporte-ventas.html">Ventas Realizadas</a>
+        <a href="reporte-ofertas.html">Ofertas por Subasta</a>
+        <a href="reporte-obras.html">Obras por Estado</a>
+        <a href="reporte-transacciones.html">Transacciones</a>
+        <a href="reporte-categoria.html">Reporte de categorías</a>
+    </div>
 
-  <main>
-    <section>
-      <h2>Obras por Categoría</h2>
-      <div class="filtros">
-        <input type="text" placeholder="Estado" id="estado" list="estado_opciones">
-        <datalist id="estado_opciones">
-          <option value="en venta">
-          <option value="subasta">
-          <option value="vendida">
-        </datalist>
+    <main>
+        <section>
+            <h2>Obras Filtradas</h2>
+            <div class="filtros">
+                <input type="text" placeholder="Categoría ID" id="categoria_id">
+                <input type="text" placeholder="Precio Máximo" id="precio_max">
+                <input type="text" placeholder="Estado" id="estado" list="estado_opciones">
+                <datalist id="estado_opciones">
+                    <option value="en venta">
+                    <option value="subasta">
+                    <option value="vendida">
+                </datalist>
+                <input type="text" placeholder="ID Artista" id="artista_id">
+                <button>Filtrar</button>
+            </div>
 
-        <button>Filtrar</button>
-      </div>
+            <div class="tabla-resultados">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Categoría</th>
+                            <th>Categoría</th>
+                            <th>ID Obra</th>
+                            <th>Título</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>ID Artista</th>
+                            <th>Total Ventas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí van los resultados de las obras -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
-      <div class="tabla-resultados">
-        <table>
-          <thead>
-            <tr>
-              <th>Categoría</th>
-              <th>Total Obras</th>
-              <th>Total Ventas</th>
-              <th>Ganancias</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+    <footer>
+        <p>&copy; 2025 Mi Sitio</p>
+    </footer>
 
-  <footer>
-    <p>&copy; 2025 Mi Sitio</p>
-  </footer>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.getElementById('sideMenu');
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.toggle('active');
+        });
+    </script>
 
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const sideMenu = document.getElementById('sideMenu');
-    menuToggle.addEventListener('click', () => {
-      sideMenu.classList.toggle('active');
-    });
-  </script>
-
-  <script src="js/reporteCategoria.js"></script>
+    <script src="js/reporteCategoria.js"></script>
 </body>
 </html>
